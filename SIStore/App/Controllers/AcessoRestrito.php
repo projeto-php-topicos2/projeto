@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 
+
 use App\Core\BaseController;
 use App\Core\PDOFactory;
+use CoffeeCode\Router\Router;
 use PDO;
 use PDOException;
 use GUMP as Validador;
@@ -26,7 +28,7 @@ class AcessoRestrito extends BaseController
     ];
 
     */
-   
+
 
     public function login()
     {
@@ -75,12 +77,13 @@ class AcessoRestrito extends BaseController
             
                         $_SESSION['id'] = $usuario['id'];
                         $_SESSION['nome'] = $usuario['nome'];
+                        
                         var_dump($usuario);
                         
                         
                         if($usuario['papel'] == '1'){
 
-                            url("indexVendedor");
+                           header("Location:".URL_BASE."/indexVendedor") ;
                         }
                         
             

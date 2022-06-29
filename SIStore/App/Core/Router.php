@@ -14,8 +14,8 @@ $route->get("/logout", "AcessoRestrito:logout");
 $route->post("/logar", "AcessoRestrito:logar");
 
 
-$route->post("/indexVendedor", "Vendedor:index");
- 
+$route->get("/indexVendedor", "Vendedor:index");
+$route->post("/cadastraCliente", "Vendedor:cadastrarCliente");
 
 
 $route->dispatch();
