@@ -1,6 +1,6 @@
 <?php 
     use App\Core\PDOFactory;
-    $rota = '/cadastraCliente';
+    $rota = '/cadastraFornecedor';
     
     
 ?>
@@ -11,14 +11,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Cliente</title>
+    <title>Cadastro de Fornecedor</title>
 </head>
 <body>
 <header class="header">
     <div class="container mt-3 mb-3">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="<?= URL_BASE . "/indexVendedor" ?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= URL_BASE . "/indexcomprador" ?>">Home</a></li>
             </ul>
         </nav>
     </div>
@@ -33,12 +33,12 @@
 
         <div class="col-6">
             <div class="form-group">
-            <label for="nome">Nome</label>
-            <input id="nome" class="form-control" type="text" name="nomeCliente" value= " "placeholder="">
+            <label for="razao">Razão Social</label>
+            <input id="razao" class="form-control" type="text" name="razao_social" value= " "placeholder="">
           </div>
           <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input id="cpf" class="form-control" type="text" name="cpf" value= " " placeholder="111.222.333-00">
+            <label for="cnpj">CNPJ</label>
+            <input id="cnpj" class="form-control" type="text" name="cnpj" value= " " placeholder="111.222.333-00">
           </div>
           <div class="form-group">
             <label for="endereco">Endereço</label>

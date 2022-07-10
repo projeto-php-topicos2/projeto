@@ -9,21 +9,21 @@ class Home extends BaseController
 
     public function index()
     {
-        // instanciar o model
-        // $this->model método herdado de BaseController
-
-       /* 
-        $artigoModel = $this->model("Produtos");
-
-        $artigos = $artigoModel->read()->fetchAll(\PDO::FETCH_ASSOC);
-
-        $data = ['artigos' => $artigos];
-
-        $this->view('home/index', $data);
-
-        */
+       
         
         require_once 'App/Views/home.php';
 
+    }
+
+    public function sucessoCadastro(){
+        require_once 'App/Views/sucesso.php';
+    }
+
+    public function sucessoAlteracao(){
+        require_once 'App/Views/alteracao.php';
+    }
+
+    public function sucessoCompra(){
+        require_once 'App/Views/sucessoCompra.php';
     }
 }

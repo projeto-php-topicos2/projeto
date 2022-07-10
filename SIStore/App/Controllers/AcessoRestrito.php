@@ -82,10 +82,19 @@ class AcessoRestrito extends BaseController
                         
                         
                         if($usuario['papel'] == '1'){
-
-                           header("Location:".URL_BASE."/indexVendedor") ;
+                            
+                           
+                             
+                           header("Location: http://localhost/projeto_SIStore/SIStore/indexvendedor") ;
+                           exit();
                         }
-                        
+                        if($usuario['papel'] == '2'){
+                            
+                           
+                             
+                            header("Location: http://localhost/projeto_SIStore/SIStore/indexcomprador") ;
+                            exit();
+                         }
             
                     } else {
                         echo "Falha ao logar!";
@@ -99,9 +108,15 @@ class AcessoRestrito extends BaseController
 
     public function logout()
     {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+    
+
         session_unset();
         session_destroy();
-        header("Location: home.php");
+        header("Location: http://localhost/projeto_SIStore/SIStore/");
+        exit();
 
     }
 

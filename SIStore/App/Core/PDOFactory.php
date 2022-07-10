@@ -14,7 +14,7 @@ class PDOFactory {
         $usuario = USUARIO;
         $senha = SENHA;
 
-        $this->con =  new PDO("mysql:host=$host;dbname=$db",$usuario,$senha);
+        $this->con =  new PDO("mysql:host=$host;dbname=$db",$usuario,$senha,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
     }
 

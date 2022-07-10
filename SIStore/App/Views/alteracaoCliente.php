@@ -1,7 +1,31 @@
 <?php 
     use App\Core\PDOFactory;
-    $rota = '/cadastraCliente';
-    
+
+     $registro = null;
+    if(isset($data)){
+
+      $id = $data['id'] ;
+      
+      $rota = '/alteraCliente';
+
+      try{
+        $pdo = new PDOFactory();
+        $con = $pdo->getConexao();
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       
+        $query = $con->query("SELECT * FROM clientes WHERE id = $id");
+
+        $registro = $query->fetch(PDO::FETCH_ASSOC);
+
+        
+
+        $con = null;
+        } catch(PDOException $e){
+            echo 'Error: ' . $e->getMessage();
+        }  
+    }
+
+  
     
 ?>
 
@@ -34,42 +58,42 @@
         <div class="col-6">
             <div class="form-group">
             <label for="nome">Nome</label>
-            <input id="nome" class="form-control" type="text" name="nomeCliente" value= " "placeholder="">
+            <input id="nome" class="form-control" type="text" name="nomeCliente" value= "<?=  $registro['nome'] ?>"placeholder="">
           </div>
           <div class="form-group">
             <label for="cpf">CPF</label>
-            <input id="cpf" class="form-control" type="text" name="cpf" value= " " placeholder="111.222.333-00">
+            <input id="cpf" class="form-control" type="text" name="cpf" value= "<?= $registro['cpf'] ?>" placeholder="111.222.333-00">
           </div>
           <div class="form-group">
             <label for="endereco">Endereço</label>
-            <input id="endereco" class="form-control" type="text" name="endereco" value= " " placeholder="">
+            <input id="endereco" class="form-control" type="text" name="endereco" value= "<?= $registro['endereco'] ?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="bairro">Bairro</label>
-            <input id="bairro" class="form-control" type="text" name="bairro" value=" " placeholder="">
+            <input id="bairro" class="form-control" type="text" name="bairro" value="<?= $registro['bairro'] ?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="cidade">Cidade</label>
-            <input id="cidade" class="form-control" type="text" name="cidade" value=" " placeholder="">
+            <input id="cidade" class="form-control" type="text" name="cidade" value="<?= $registro['cidade'] ?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="uf">UF</label>
-            <input id="uf" class="form-control" type="text" name="uf" value=" " placeholder="">
+            <input id="uf" class="form-control" type="text" name="uf" value="<?= $registro['uf'] ?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="cep">CEP</label>
-            <input id="cep" class="form-control" type="text" name="cep" value=" " placeholder="">
+            <input id="cep" class="form-control" type="text" name="cep" value="<?= $registro['cep'] ?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="telefone">Telefone</label>
-            <input id="telelone" class="form-control" type="text" name="telefone" value=" " placeholder="(00) 0000-0000">
+            <input id="telelone" class="form-control" type="text" name="telefone" value="<?= $registro['telefone'] ?>" placeholder="(00) 0000-0000">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" class="form-control" type="email" name="email" value=" " placeholder="">
+            <input id="email" class="form-control" type="email" name="email" value="<?= $registro['email'] ?>" placeholder="">
           </div>  
           
-            <input id="id" class="form-control" type="hidden" name="id" value=" ">
+            <input id="id" class="form-control" type="hidden" name="id" value="<?= $registro['id'] ?>">
          
           
 
