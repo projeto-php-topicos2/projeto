@@ -12,11 +12,12 @@
  
  ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <link rel="stylesheet" href="<?= url("/public/css/bootstrap.min.css"); ?>"/>
-    <title>Sucesso</title>
+    <title>Erro - Venda</title>
 </head>
 <body>
 <header class="header">
@@ -24,13 +25,14 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="<?= URL_BASE . $rota ?>">Voltar</a></li>
+                <?php var_dump($_SESSION['id']) ?>
                 
             </ul>
         </nav>
     </div>
 </header>
 <main class="container">
-    <h1>Remoção feito com sucesso!</h1>
+    <h1>Quantidade indisponivel ou não liberado para venda!</h1>
 
     
    

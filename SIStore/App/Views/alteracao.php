@@ -1,4 +1,18 @@
-!<!DOCTYPE html>
+<?php 
+ session_start();
+ $rota =null;
+ 
+ if($_SESSION['id'] == '1'){
+   $rota = '/indexvendedor';
+ } 
+
+ if($_SESSION['id'] == '2' ){
+    $rota = '/indexcomprador';
+ }
+ 
+ ?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
    <link rel="stylesheet" href="<?= url("/public/css/bootstrap.min.css"); ?>"/>
@@ -9,7 +23,7 @@
     <div class="container mt-3 mb-3">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="<?= URL_BASE . "/indexvendedor" ?>">Voltar</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= URL_BASE . $rota ?>">Voltar</a></li>
                 
             </ul>
         </nav>

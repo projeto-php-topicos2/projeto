@@ -13,7 +13,7 @@
     <div class="container mt-3 mb-3">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/' ?>">Listar Produtos</a></li>
+            <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/listarProdutos' ?>">Listar Produtos</a></li>
             <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/compra' ?>">Comprar</a></li>
                 <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/listarFornecedores' ?>">Listar Fornecedores</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= URL_BASE.'/formularioFornecedor' ?>">Cadastrar Fornecedor</a></li>

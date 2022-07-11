@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/listarVendas' ?>">Listar Vendas</a></li>
-               <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/listarClientes2' ?>">Realizar Venda</a></li>
+               <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/formularioVenda' ?>">Realizar Venda</a></li>
                 <li class="nav-item active"><a class="nav-link" href="<?= URL_BASE.'/listarClientes' ?>">Listar Clientes</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= URL_BASE.'/formularioCliente' ?>">Cadastrar Cliente</a></li>
             </ul>
@@ -25,9 +25,9 @@
 
             <main>
             <div class="container mt-3">
-                <p>Nome: <?php echo $_SESSION['nome']?></p>
+                <p>Vendedor: <?php echo $_SESSION['nome']?></p>
                
-
+                <?php var_dump($_SESSION['id']) ?>
                 <a style="color:white" href="<?= URL_BASE.'/logout' ?>"><button class="btn btn-primary">Sair</button></a>
             </div>
             </main>  

@@ -4,12 +4,27 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Core\PDOFactory;
+use App\Models\ProdutoDAO;
 use PDO;
 use PDOException;
 
 class Comprador extends BaseController
 {
     
+    public function __construct() {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+    
+    
+        if (!(isset($_SESSION['id']) && isset($_SESSION['nome']))) {
+            header("Location:".URL_BASE."/");
+        } else {
+            require_once 'App/Views/indexComprador.php';
+    
+        }
+    
+    }
 
     public function indexComprador()
     {
@@ -359,6 +374,36 @@ class Comprador extends BaseController
         }      
 
      }
+
+     public function listarProdutos(){
+        require_once 'App/Views/listaProduto.php';
+  
+       }
+
+     public function liberaVenda(){
+        $produtoDAO = new ProdutoDAO();
+         $id = $_POST['id'];
+
+         $produto = $produtoDAO->buscarProduto($id);
+
+         var_dump($produto);
+     
+         $novoLibera = null;
+
+         if($produto[0]['liberado_venda'] == 'S'){
+            $novoLibera = 'N';
+         }
+
+         if($produto[0]['liberado_venda'] == 'N'){
+            $novoLibera = 'S';
+         }
+
+         
+
+         $produtoDAO->mudarVenda($novoLibera,$id);
+         header("Location: http://localhost/projeto_SIStore/SIStore/listarProdutos");
+  
+       }   
 
 
 }

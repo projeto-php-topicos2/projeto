@@ -24,6 +24,14 @@ $route->get("/removerCliente/{id}","Vendedor:removerCliente");
 $route->get("/sucessoCadastro","Home:sucessoCadastro");
 $route->get("/sucessoAlteracao","Home:sucessoAlteracao");
 
+//Requisições -Venda /Vendedor
+$route->get("/formularioVenda","Vendedor:exibirFormVenda");
+$route->post("/cadastraVenda","Vendedor:cadastrarVenda");
+$route->get("/erroVenda","Vendedor:erroVenda");
+$route->get("/listarVendas","Vendedor:listarVendas");
+
+
+
 //Requisições - Fornecedor /Comprador
 $route->get("/indexcomprador","Comprador:indexComprador");
 $route->get("/formularioFornecedor","Comprador:exibirFormFornecedor");
@@ -50,6 +58,8 @@ $route->get("/sucessoCompra","Home:sucessoCompra");
 $route->get("/compra","Comprador:tipoDeCompra");
 $route->get("/formularioCompra","Comprador:exibiFormCompra");
 $route->post("/cadastraCompra","Comprador:cadastrarCompra");
+$route->get("/listarProdutos","Comprador:listarProdutos");
+$route->post("/liberaVenda","Comprador:liberaVenda");
 
 
 

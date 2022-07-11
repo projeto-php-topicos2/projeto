@@ -75,7 +75,7 @@ class AcessoRestrito extends BaseController
                             session_start();
                         }
             
-                        $_SESSION['id'] = $usuario['id'];
+                        $_SESSION['id'] = $usuario['papel'];
                         $_SESSION['nome'] = $usuario['nome'];
                         
                         var_dump($usuario);

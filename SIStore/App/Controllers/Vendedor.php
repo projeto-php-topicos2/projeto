@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Core\PDOFactory;
+use App\Models\ProdutoDAO;
 use PDO;
 use PDOException;
 
@@ -179,6 +180,83 @@ class Vendedor extends BaseController
      public function listarClientes(){
       require_once 'App/Views/listaCliente.php';
 
+     }
+
+
+     public function exibirFormVenda(){
+        require_once 'App/Views/cadastroVenda.php';
+     }
+
+     public function cadastrarVenda(){
+
+        
+        $idProduto = $_POST['id_produto'];
+        $idCliente = $_POST['id_cliente'];
+        $qtd = $_POST['quantidade_venda'];
+        $data = $_POST['data_venda'];
+        $valor = $_POST['valor_venda'];
+        $idFuncionario = $_POST['id_funcionario'];
+            
+        $produtoDAO = new ProdutoDAO();
+        $produto = $produtoDAO->buscarProduto($idProduto);
+
+        if($produto[0]['quantidade_disponível'] == '0' || $produto[0]['liberado_venda'] == 'N' ){
+            header("Location: http://localhost/projeto_SIStore/SIStore/erroVenda");
+        } else {
+            try{
+                $pdo = new PDOFactory();
+                $con = $pdo->getConexao();
+                $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+               
+
+                $stmt = $con->prepare("INSERT INTO vendas (quantidade_venda,data_venda,valor_venda,id_cliente,id_produto,id_funcionario) VALUES (?,?,?,?,?,?)");
+                
+                
+                $stmt->bindValue(1,$qtd);
+                $stmt->bindValue(2,$data);
+                $stmt->bindValue(3,$valor);
+                $stmt->bindValue(4,$idCliente);
+                $stmt->bindValue(5,$idProduto);
+                $stmt->bindValue(6,$idFuncionario);
+               
+
+                $stmt->execute();
+
+
+                
+                $qtd = (int)$qtd;
+
+                $qtd_dispo = (int)$produto[0]['quantidade_disponível'];
+
+                $qtd_nova = $qtd_dispo - $qtd;
+
+                $qtd_nova = (string)$qtd_nova;
+
+                $stmt_nova = $con->prepare("UPDATE produtos SET quantidade_disponível = ? WHERE id = ?");
+
+                $stmt_nova->bindValue(1,$qtd_nova);
+                $stmt_nova->bindValue(2,$idProduto);
+
+                $stmt_nova->execute();
+
+                $con = null;
+
+                header("Location: http://localhost/projeto_SIStore/SIStore/sucessoCadastro");
+
+            } catch (PDOException $e){
+                echo 'Error: ' . $e->getMessage();
+            } 
+        }
+
+     }
+
+     public function listarVendas(){
+        require_once 'App/Views/listaVenda.php';
+  
+       }
+
+     public function erroVenda(){
+        require_once 'App/Views/erroVenda.php';
      }
     
 }
